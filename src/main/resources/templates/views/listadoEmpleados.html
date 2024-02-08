@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>CRUD de Empleados con Spring MVC JPA Thymeleaf</h1>
+
+    <h3>Listado de Empleados</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Fecha Alta</th>
+                <th>Salario</th>
+                <th>Genero</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each=" empleado : ${empleados}">
+                <td th:text="${empleado.nombre}"></td>
+                <td th:text="${empleado.primerApellido}"></td>
+                <td th:text="${empleado.segundoApellido}"></td>
+                <td th:text="${empleado.fechaAlta}"></td>
+                <td th:text="${empleado.salario}"></td>
+                <td th:text="${empleado.genero}"></td>
+                <td>
+                    <!-- <a th:href="@{/detalles?id=}+${empleado.id}">Detalles</a> -->
+                    <a th:href="@{/detalles/}+${empleado.id}">Detalles</a>
+                    <a th:href="@{/actualizar/}+${empleado.id}">Actualizar</a>
+                    <a th:href="@{/eliminar/}+${empleado.id}">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <a th:href="@{/frmAltaModificacion}">Formulario de Alta de Empleado</a>
+    </div>
+</body>
+</html>
